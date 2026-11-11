@@ -7,9 +7,9 @@ export class AppController {
 
   @Get()
   @Render('index')
-  getHello() {
+  async getRules() {
     return {
-      title: 'My First NestJS App'
-    }
+      rules: (await this.appService.getRules()).toSorted((a, b) => a.priority - b.priority)
+    };
   }
 }

@@ -10,5 +10,31 @@
 </head>
 <body>
     <h1>Firewall blocklist</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Priority</th>
+                <th>MAC address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% rules.forEach(rule => { %>
+                <% if (rule.enabled == 0) { %>
+                    <tr style="font-style: italic;">
+                        <td><%= rule.id %></td>
+                        <td><%= rule.priority %></td>
+                        <td><%= rule.mac %></td>
+                    </tr>
+                <% } else { %>
+                    <tr>
+                        <td><%= rule.id %></td>
+                        <td><%= rule.priority %></td>
+                        <td><%= rule.mac %></td>
+                    </tr>
+                <% } %>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
 </html>
