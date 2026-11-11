@@ -17,7 +17,11 @@ export class AppService {
   }
 
   async getRules() {
-    const [results] = await mySqlConnection.execute("SELECT id, priority, mac, enabled FROM blocklist");
+    const [results] = await mySqlConnection.execute("SELECT id, priority, mac, enabled FROM blocklist ORDER BY priority ASC");
     return results as Rule[];
+  }
+
+  async newRule(priority: number, mac: string, enabled: number) {
+    await mySqlConnection.execute("INSERT INTO blocklist (priority, mac, enabled) VALUES (?,?,?)", [priority, mac, enabled]);
   }
 }

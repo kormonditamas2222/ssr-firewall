@@ -36,5 +36,29 @@
             <% }) %>
         </tbody>
     </table>
+
+    <h2>Add new rule</h2>
+    <form method="post">
+        <label for="priority">Priority</label>
+        <input type="number" name="priority"> <br>
+        <label for="mac">MAC address (use correct format)</label>
+        <input type="text" name="mac"> <br>
+        <label for="enabled">Enabled</label>
+        <input type="radio" name="enabled" value="1" checked> 
+        <label for="enabled">Disabled</label>
+        <input type="radio" name="enabled" value="0"> <br>
+        <button type="submit">Create new rule</button>
+    </form>
+
+    <p>
+        <% if (locals.errors) { %>
+            <% locals.errors.forEach(error => { %>
+                <%= error %> <br>
+            <% }) %>
+        <% } %>
+        <% if (locals.success) { %>
+            <%= locals.success %>
+        <% } %>
+    </p>
 </body>
 </html>

@@ -1,3 +1,7 @@
 table, tr, td, th {
     border: solid black 1px;
 }
+
+input {
+    margin-bottom: 2px;
+}
